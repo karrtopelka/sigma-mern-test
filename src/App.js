@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { CssBaseline, GeistProvider } from '@geist-ui/react';
+import PageLayout from './components/PageLayout/PageLayout';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-function App() {
+const App = () => {
+  const [themeType, setThemeType] = useState('light');
+
+  const switchThemes = () => {
+    setThemeType((last) => (last === 'dark' ? 'light' : 'dark'));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GeistProvider themeType={themeType}>
+        <CssBaseline />
+        <Router>
+          <PageLayout switchThemes={switchThemes} themeType={themeType} />
+        </Router>
+      </GeistProvider>
+    </>
   );
-}
+};
 
 export default App;
