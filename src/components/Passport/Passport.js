@@ -7,14 +7,12 @@ import {
   useToasts,
 } from '@geist-ui/react';
 import React, { useState } from 'react';
-import { checkCookie } from '../../http/cookies';
 import InputGrid from '../InputGrid/InputGrid';
 import InputWrapper from '../InputWrapper/InputWrapper';
 import { setPassport } from '../../http/userAPI';
 import { setCookie } from '../../http/cookies';
 
-const Passport = ({ history }) => {
-  const [user, setUser] = useState(JSON.parse(checkCookie('user')));
+const Passport = ({ history, user }) => {
   const isXS = useMediaQuery('xs', { match: 'down' });
   const [error, setError] = useState(null);
   const [, setToast] = useToasts();

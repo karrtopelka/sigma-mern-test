@@ -10,7 +10,6 @@ import Home from '../Home/Home';
 import Passport from '../Passport/Passport';
 import FavColor from '../FavColor/FavColor';
 import { checkCookie, setCookie } from '../../http/cookies';
-import e from 'cors';
 
 const PageLayout = ({ switchThemes, themeType }) => {
   const isXS = useMediaQuery('xs', { match: 'down' });
@@ -73,13 +72,13 @@ const PageLayout = ({ switchThemes, themeType }) => {
             <Registration history={history} />
           </Route>
           <Route path="/passport">
-            <Passport history={history} />
+            <Passport history={history} user={user} />
           </Route>
           <Route path="/favcolor">
-            <FavColor history={history} />
+            <FavColor history={history} user={user} />
           </Route>
           <Route path="/">
-            <Home history={history} />
+            <Home user={user} />
           </Route>
         </Switch>
       </Page.Content>

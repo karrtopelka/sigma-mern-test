@@ -1,10 +1,9 @@
 import { Card, Grid, Text, useToasts } from '@geist-ui/react';
 import React, { useState } from 'react';
 import { setFavColor } from '../../http/userAPI';
-import { setCookie, checkCookie } from '../../http/cookies';
+import { setCookie } from '../../http/cookies';
 
-const FavColor = ({ history }) => {
-  const [user, setUser] = useState(JSON.parse(checkCookie('user')));
+const FavColor = ({ history, user }) => {
   const [, setToast] = useToasts();
   const [error, setError] = useState(null);
   const colors = [

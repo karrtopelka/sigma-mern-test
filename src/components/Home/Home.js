@@ -1,20 +1,8 @@
 import { Col, Row, Text, Grid, Button, Spacer } from '@geist-ui/react';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { checkCookie } from '../../http/cookies';
 
-const Home = ({ history }) => {
-  const [user, setUser] = useState('');
-
-  useEffect(() => {
-    const checker = checkCookie('user');
-    if (checker) {
-      setUser(JSON.parse(checker));
-    } else {
-      history.push('/login');
-    }
-  }, []);
-
+const Home = ({ user }) => {
   return (
     <Row>
       <Col span={8}>
